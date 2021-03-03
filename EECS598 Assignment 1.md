@@ -80,15 +80,31 @@ In terms of the network convergence, the accuracy convergence is **<u>slower</u>
 
 To start the i-th worker on the i-th node in a 3 node cluster,
 
+#### 6.1 One worker
+
 ```sh
-i=0 nohup psrecord "python p0.py -n 3 -np 1 -nr $i" --log q6.$i.log --interval 0.5 --include-children --plot plot.png &
+export i=0; nohup psrecord "python p0.py -n 1 -np 1 -nr $i" --log q6.1.$i.log --interval 0.5 --include-children --plot q6.1.$i.png &
 ```
 
-#### 6.1 One worker
+
 
 #### 6.2 Two workers
 
+```sh
+export i=0; nohup psrecord "python p0.py -n 2 -np 1 -nr $i" --log q6.2.$i.log --interval 0.5 --include-children --plot q6.2.$i.png &
+```
+
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q6.2.0.png" style="zoom:67%;" />![image-20210303220331601](/home/tianyi/.config/Typora/typora-user-images/image-20210303220331601.png)
+
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q6.2.0.png" style="zoom:67%;" />![image-20210303220331601](/home/tianyi/.config/Typora/typora-user-images/image-20210303220331601.png)
+
 #### 6.3 Three workers
+
+```sh
+export i=0; nohup psrecord "python p0.py -n 3 -np 1 -nr $i" --log q6.3.$i.log --interval 0.5 --include-children --plot q6.3.$i.png &
+```
+
+
 
 ### 7. Two processes per worker
 
