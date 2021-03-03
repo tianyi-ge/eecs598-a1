@@ -16,9 +16,9 @@ to profile the training process. The sampling interval is 0.5 s (the choice of s
 
 1. Completion time of training: **<u>~7952.41</u>** seconds
 2. Average CPU usage: **<u>542.10%</u>**. Periodically, spikes occur at the end of each batch because (...).
-3. Average memory usage: **<u>2742.22</u>**MB. Periodically, spikes occur at the end of each batch because (...).
+3. Average memory usage: **<u>2742.22</u>** MB. Periodically, spikes occur at the end of each batch because (...).
 
-![](/home/tianyi/Documents/21 Winter/EECS598/Assignment/q2.png)
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q2.png" style="zoom:67%;" />
 
 ### 3. With chkpt
 
@@ -36,10 +36,15 @@ The completion time (with `psrecord` enabled for fair comparison with Question 2
 nohup psrecord "python p0.py --batch_size=32" --log q4.1.log --interval 0.5 --include-children --plot q4.1.png &
 ```
 
-1. Completion time of training: (...)
-2. Average CPU usage: **<u>389.76%</u>**. 
-3. Average memory usage: 4459.34</u>** MB.
-4. Compared to Question 2 (batch size = 64), (...).
+1. Completion time of training: **<u>~11089.77</u>** seconds.
+2. Average CPU usage: **<u>621.53%</u>**. 
+3. Average memory usage: **<u>4410.67</u>** MB.
+4. Compared to Question 2 (batch size = 64),
+   1. The completion time increases by **<u>~39%</u>**.
+   2. The CPU usage increases by **<u>~15%</u>**.
+   3. The memory usage increases by **<u>~1.6%</u>**.
+
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q4.1.png" alt="q4.1" style="zoom:67%;" />
 
 #### 4.2 Batch_size = 256
 
@@ -55,19 +60,19 @@ nohup psrecord "python p0.py --batch_size=256" --log q4.2.log --interval 0.5 --i
 
 4. Compared to Questions 2 (batch size = 64), 
 
-   1. The completion time also drops by ~23%.
-   2. The CPU usage drops by ~28%.
-   3. The memory usage increases by ~63%.
+   1. The completion time drops by **<u>~23%</u>**.
+   2. The CPU usage drops by **<u>~28%</u>**.
+   3. The memory usage increases by **<u>~63%</u>**.
 
-   ![q4.2](/home/tianyi/Documents/21 Winter/EECS598/Assignment/q4.2.png)
+   <img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q4.2.png" alt="q4.2" style="zoom:67%;" />
 
-   In terms of the network convergence, the accuracy convergence is **<u>slower</u>** than batch size of 64 because as the batch size increases, although the gradient calculation is closer to the global result, the loss function might hit a saddle point or local minimum since the loss function is usually not smooth.
+#### 4.3. Comparisons
 
-   ![image-20210303142941905](/home/tianyi/.config/Typora/typora-user-images/image-20210303142941905.png)
+In terms of the network convergence, the accuracy convergence is **<u>slower</u>** (see section 5) as the batch size increases because although the gradient calculation is closer to the global result, the larger batch size might lead to a saddle point or local minimum since the loss function is usually not smooth.
 
-### 5. TensorBoard
+### 5. Tensorboard
 
-![image-20210303141616428](/home/tianyi/.config/Typora/typora-user-images/image-20210303141616428.png)
+<img src="/home/tianyi/.config/Typora/typora-user-images/image-20210303193904075.png" alt="image-20210303193904075" style="zoom:67%;" />
 
 ## Task 2
 
@@ -91,9 +96,23 @@ i=0 nohup psrecord "python p0.py -n 3 -np 1 -nr $i" --log q6.$i.log --interval 0
 nohup psrecord "python p0.py -np 2" --log q7.log --interval 0.5 --include-children --plot q7.png &
 ```
 
+1. Completion time of training: **<u>~6036.68</u>** seconds
+2. Average CPU usage: **<u>1083.77%</u>**.
+3. Average memory usage: **<u>5354.05</u>** MB.
+4. Compared to Questions 2 (1 processor per worker), 
+   1. The completion time drops by **<u>~24%</u>**.
+   2. The CPU usage increases by **<u>~100%</u>**.
+   3. The memory usage increases by **<u>~95%</u>**.
 
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q7.png" alt="q7" style="zoom: 67%;" />
+
+Starting 2 processes on one single worker, from the observation of CPU and memory, basically doubles the CPU and memory usage. As the completion time, it saves **<u>~24%</u>** of the execution time. However, the accuracy drops **<u>~0.05%</u>** if starting two processes.
+
+<img src="/home/tianyi/.config/Typora/typora-user-images/image-20210303194802682.png" alt="image-20210303194802682" style="zoom:67%;" />
 
 ### 8. Convergence rate
+
+
 
 ### 9. Hours
 

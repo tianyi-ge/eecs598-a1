@@ -40,7 +40,7 @@ def main():
     print(args)
 
     # Task 2: Assign IP address and port for master process, i.e. process with rank=0
-    os.environ['MASTER_ADDR'] = '127.0.0.1'
+    os.environ['MASTER_ADDR'] = '10.10.1.1'
     os.environ['MASTER_PORT'] = '29500'
 
     # Spawns one or many processes untied to the first Python process that runs on the file.
