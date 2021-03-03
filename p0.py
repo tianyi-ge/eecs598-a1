@@ -15,6 +15,7 @@ from torchvision.utils import make_grid
 from torch.utils.data.dataloader import DataLoader
 from torch.utils.data import random_split
 from torch.utils.tensorboard import SummaryWriter
+from torch.utils.data.distributed import DistributedSampler
 
 
 # For deterministic runs
@@ -59,9 +60,9 @@ def load_datasets(batch_size, world_size, rank):
   val_ds = val_dataset
 
   # Task 2: modify train loader to work with multiple processes
-  # 1. Generate a DistributedSample instance with num_replicas = world_size
+  # 1. Generate a DistributedSampler instance with num_replicas = world_size
   #    and rank=rank.
-  sampler = dist.DistributedSampler(dataset=dataset, num_replicas=world_size, rank=rank)
+  sampler = DistributedSampler(dataset=dataset, num_replicas=world_size, rank=rank)
   # 2. Set train_loader's sampler to the distributed sampler
 
   train_loader = torch.utils.data.DataLoader(dataset=dataset,   
