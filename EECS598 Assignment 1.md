@@ -9,14 +9,14 @@
 Here we use
 
 ```sh
-nohup psrecord "python p0.py" --log q2.log --interval 0.5 --include-children --plot plot.png &
+nohup psrecord "python p0.py" --log q2.log --interval 0.5 --include-children --plot q2.png &
 ```
 
 to profile the training process. The sampling interval is 0.5 s (the choice of sampling intervals will influence the total completion time).
 
 1. Completion time of training: **<u>~7952.41</u>** seconds
-2. Average CPU usage: **<u>542.10%</u>**. Periodically, spikes occur at the end of each batch because (...).
-3. Average memory usage: **<u>2742.22</u>** MB. Periodically, spikes occur at the end of each batch because (...).
+2. Average CPU usage: **<u>542.10%</u>**. Periodically, spikes occur at the end of each batch.
+3. Average memory usage: **<u>2742.22</u>** MB. Periodically, spikes occur at the end of each batch.
 
 <img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q2.png" style="zoom:67%;" />
 
@@ -44,7 +44,7 @@ nohup psrecord "python p0.py --batch_size=32" --log q4.1.log --interval 0.5 --in
    2. The CPU usage increases by **<u>~15%</u>**.
    3. The memory usage increases by **<u>~1.6%</u>**.
 
-<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q4.1.png" alt="q4.1" style="zoom:67%;" />
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q4.1.png" alt="q4.1" style="zoom: 50%;" />
 
 #### 4.2 Batch_size = 256
 
@@ -64,7 +64,7 @@ nohup psrecord "python p0.py --batch_size=256" --log q4.2.log --interval 0.5 --i
    2. The CPU usage drops by **<u>~28%</u>**.
    3. The memory usage increases by **<u>~63%</u>**.
 
-   <img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q4.2.png" alt="q4.2" style="zoom:67%;" />
+   <img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q4.2.png" alt="q4.2" style="zoom: 50%;" />
 
 #### 4.3. Comparisons
 
@@ -72,7 +72,7 @@ In terms of the network convergence, the accuracy convergence is **<u>slower</u>
 
 ### 5. Tensorboard
 
-<img src="/home/tianyi/.config/Typora/typora-user-images/image-20210303193904075.png" alt="image-20210303193904075" style="zoom:67%;" />
+<img src="/home/tianyi/.config/Typora/typora-user-images/image-20210303193904075.png" alt="image-20210303193904075" style="zoom: 50%;" />
 
 ## Task 2
 
@@ -86,7 +86,15 @@ To start the i-th worker on the i-th node in a 3 node cluster,
 export i=0; nohup psrecord "python p0.py -n 1 -np 1 -nr $i" --log q6.1.$i.log --interval 0.5 --include-children --plot q6.1.$i.png &
 ```
 
+1. Completion time of training: **<u>~4414.81</u>** seconds
+2. Average CPU usage: **<u>520.48%</u>**.
+3. Average memory usage: **<u>4572.39</u>** MB.
+4. Compared to Questions 2, 
+   1. The completion time drops by **<u>~44.5%</u>**.
+   2. The CPU usage drops by **<u>~4%</u>**.
+   3. The memory usage increases by **<u>~66.7%</u>**.
 
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q6.1.0.png" style="zoom:50%;" />![image-20210304120836848](/home/tianyi/.config/Typora/typora-user-images/image-20210304120836848.png)<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q6.1.0.png" style="zoom:50%;" />![image-20210304120836848](/home/tianyi/.config/Typora/typora-user-images/image-20210304120836848.png)
 
 #### 6.2 Two workers
 
@@ -94,9 +102,15 @@ export i=0; nohup psrecord "python p0.py -n 1 -np 1 -nr $i" --log q6.1.$i.log --
 export i=0; nohup psrecord "python p0.py -n 2 -np 1 -nr $i" --log q6.2.$i.log --interval 0.5 --include-children --plot q6.2.$i.png &
 ```
 
-<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q6.2.0.png" style="zoom:67%;" />![image-20210303220331601](/home/tianyi/.config/Typora/typora-user-images/image-20210303220331601.png)
+1. Completion time of training: **<u>~4414.81</u>** seconds
+2. Average CPU usage: **<u>520.48%</u>**.
+3. Average memory usage: **<u>4572.39</u>** MB.
+4. Compared to Questions 2, 
+   1. The completion time drops by **<u>~44.5%</u>**.
+   2. The CPU usage drops by **<u>~4%</u>**.
+   3. The memory usage increases by **<u>~66.7%</u>**.
 
-<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q6.2.0.png" style="zoom:67%;" />![image-20210303220331601](/home/tianyi/.config/Typora/typora-user-images/image-20210303220331601.png)
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q6.2.0.png" style="zoom: 50%;" /><img src="/home/tianyi/.config/Typora/typora-user-images/image-20210303220331601.png" alt="image-20210303220331601" style="zoom: 50%;" />
 
 #### 6.3 Three workers
 
@@ -105,6 +119,10 @@ export i=0; nohup psrecord "python p0.py -n 3 -np 1 -nr $i" --log q6.3.$i.log --
 ```
 
 
+
+### 6.4 About batch_size
+
+For a fair comparison to single-node version (`batch_size`=64), the setting of 1, 2, 3 workers should respectively set `batch_size` to 64, , .
 
 ### 7. Two processes per worker
 
@@ -120,7 +138,7 @@ nohup psrecord "python p0.py -np 2" --log q7.log --interval 0.5 --include-childr
    2. The CPU usage increases by **<u>~100%</u>**.
    3. The memory usage increases by **<u>~95%</u>**.
 
-<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q7.png" alt="q7" style="zoom: 67%;" />
+<img src="/home/tianyi/Documents/21 Winter/EECS598/Assignment/eecs598-a1/q7.png" alt="q7" style="zoom: 50%;" />
 
 Starting 2 processes on one single worker, from the observation of CPU and memory, basically doubles the CPU and memory usage. As the completion time, it saves **<u>~24%</u>** of the execution time. However, the accuracy drops **<u>~0.05%</u>** if starting two processes.
 
